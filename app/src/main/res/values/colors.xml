@@ -13,4 +13,6 @@
     <color name="brown">#BF9B6F</color>
     <color name="yellow">#D9AA1E</color>
 
+    <color name="transparent">#00D9AA1E</color>
+
 </resources>

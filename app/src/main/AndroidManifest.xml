@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyDV2pGO9KXLicf5z6s7AOa_dpb8gKRQrnw" />
 
         <service
             android:name=".util.TaximeterService"

@@ -3,9 +3,6 @@ package com.morpion.taximeter.util
 import android.graphics.Color
 
 object Constants {
-    const val DATABASE_NAME = "taximeter"
-    const val REQUEST_CODE_LOCATION_PERMISSION = 0
-
     const val ACTION_START_OR_RESUME_SERVICE = "ACTION_START_OR_RESUME_SERVICE"
     const val ACTION_PAUSE_SERVICE = "ACTION_PAUSE_SERVICE"
     const val ACTION_STOP_SERVICE = "ACTION_STOP_SERVICE"
@@ -21,5 +18,8 @@ object Constants {
     const val POLYLINE_COLOR = Color.YELLOW
     const val POLYLINE_WIDTH = 8f
     const val MAP_ZOOM = 20f
+
+    const val TAXIMETER_START_PRICE = "taximeter_start_price"
+    const val TAXIMETER_KM_PRICE = "taximeter_km_price"
 
 }

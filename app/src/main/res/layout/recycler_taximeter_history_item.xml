@@ -148,11 +148,19 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/tv_start_date_title"
+                    android:id="@+id/tv_date_title"
                     style="@style/text_medium_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Başlangıç Tarihi:" />
+                    android:text="Tarih:" />
+
+                <TextView
+                    android:id="@+id/tv_start_date"
+                    style="@style/text_medium_yellow"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.04.2023" />
 
             </TableRow>
             <TableRow
@@ -163,56 +171,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/black"/>
-            </TableRow>
-
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tv_start_date"
-                    style="@style/text_medium_yellow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10.04.2023" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/tv_end_date_title"
-                    style="@style/text_medium_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bitiş Tarihi:" />
-            </TableRow>
+                android:layout_marginTop="10dp"/>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black"/>
-            </TableRow>
+                android:layout_height="wrap_content"/>
 
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tv_end_date"
-                    style="@style/text_medium_yellow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10.04.2023" />
-            </TableRow>
+                android:layout_height="match_parent"/>
         </TableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

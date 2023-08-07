@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morpion.taximeter.R
+import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData
 import com.morpion.taximeter.databinding.FragmentTaximeterBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.util.Constants.ACTION_PAUSE_SERVICE
@@ -22,16 +23,22 @@ import com.morpion.taximeter.util.Constants.ACTION_STOP_SERVICE
 import com.morpion.taximeter.util.Constants.MAP_ZOOM
 import com.morpion.taximeter.util.Constants.POLYLINE_COLOR
 import com.morpion.taximeter.util.Constants.POLYLINE_WIDTH
+import com.morpion.taximeter.util.LocalSessions
 import com.morpion.taximeter.util.Polyline
 import com.morpion.taximeter.util.TaximeterService
 import com.morpion.taximeter.util.TaximeterUtility
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Math.round
 import java.util.*
-import kotlin.math.roundToInt
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximeterBinding::inflate) {
+
+    private val viewModel: TaximeterViewModel by viewModels()
+
+    @Inject
+    lateinit var sessions: LocalSessions
 
     private var map: GoogleMap? = null
     // taksimetre çalışma kontrolü
@@ -73,7 +80,13 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
         }
         val curDate = Calendar.getInstance().timeInMillis
         stopTaximeter()
-        Toast.makeText(requireContext(),"$curDate + ${avgSpeed.toLong()} + $distance $curTimeInSeconds",Toast.LENGTH_SHORT).show()
+        viewModel.saveTaximeter(TaximeterHistoryLocalData(
+            id = 0,
+            paid = binding.tvPaid.text.toString(),
+            distance = binding.tvDistance.text.toString(),
+            time = binding.tvTime.text.toString(),
+            date = curDate
+        ))
     }
 
     // Son çizgiyi ekleme
@@ -146,7 +159,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
             val distTaximeter = it
             distance = TaximeterUtility.calculateLengthofPolylines(distTaximeter)
             val distanceFormat = round((distance / 1000f) * 10) /10f
-            val paid = 15 + (distanceFormat * 15f)
+            val paid = sessions.taximeterStartPrice + (distanceFormat * sessions.taximeterKmPrice)
             binding.tvDistance.text = distanceFormat.toString()
             binding.tvPaid.text = paid.toString()
         })

@@ -6,9 +6,12 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/cardview_background.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/cardview_background_normal.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_settings.xml" value="0.1835" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/activity_google_maps.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/app_exit_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/app_exit_dialog.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter.xml" value="0.33" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_taximeter_history_item.xml" value="0.33" />
       </map>
     </option>

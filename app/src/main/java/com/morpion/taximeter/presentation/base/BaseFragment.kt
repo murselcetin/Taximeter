@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morpion.taximeter.R
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -35,22 +36,18 @@ abstract class BaseFragment<viewBinding : ViewBinding>(private val inflate: Infl
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    val builder = AlertDialog.Builder(context)
-                    val alertDesign = LayoutInflater.from(context).inflate(R.layout.app_exit_dialog, null)
-                    val yesButton = alertDesign.findViewById(R.id.buttonYes) as Button
-                    val noButton = alertDesign.findViewById(R.id.buttonNo) as Button
-                    builder.setView(alertDesign)
-                    val d = builder.create()
-                    d.setCanceledOnTouchOutside(false)
-                    d.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                    yesButton.setOnClickListener {
-                        activity?.finish()
-                        d.dismiss()
-                    }
-                    noButton.setOnClickListener {
-                        d.dismiss()
-                    }
-                    d.show()
+                    val dialog = MaterialAlertDialogBuilder(requireContext())
+                        .setTitle("Taksimetre")
+                        .setMessage("Uygumaladan çıkmak istediğinize emin misiniz?")
+                        .setIcon(R.drawable.ic_taxi)
+                        .setPositiveButton("Evet") { d,_ ->
+                            activity?.finish()
+                            d.dismiss()
+                        }
+                        .setNegativeButton("Hayır") { d,_ -> d.dismiss() }
+                        .create()
+
+                    dialog.show()
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(

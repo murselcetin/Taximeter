@@ -9,5 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="com.morpion.taximeter.presentation.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_taximeterFragment"
+            app:destination="@id/taximeterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taximeterFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaximeterFragment"
+        android:label="fragment_taximeter"
+        tools:layout="@layout/fragment_taximeter" >
+        <action
+            android:id="@+id/action_taximeterFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

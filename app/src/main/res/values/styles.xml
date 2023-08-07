@@ -71,4 +71,12 @@
         <item name="fontFamily">@font/dijitalfont</item>
     </style>
 
+    <style name="digital_text_large_white">
+        <item name="android:textSize">30sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/dijitalfont</item>
+    </style>
+
 </resources>

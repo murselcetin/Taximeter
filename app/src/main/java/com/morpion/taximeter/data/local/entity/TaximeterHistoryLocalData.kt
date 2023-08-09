@@ -1,5 +1,6 @@
 package com.morpion.taximeter.data.local.entity
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,6 +15,7 @@ data class TaximeterHistoryLocalData(
     @ColumnInfo(name = "distance") val distance: String?,
     @ColumnInfo(name = "time") val time: String?,
     @ColumnInfo(name = "date") val date: Long?,
+    @ColumnInfo(name = "image") var img: Bitmap?
 )
 
 fun TaximeterHistoryLocalData.toUiModel() : TaximeterHistoryUIModel{
@@ -22,6 +24,7 @@ fun TaximeterHistoryLocalData.toUiModel() : TaximeterHistoryUIModel{
         paid = paid?: "",
         distance = distance?: "",
         time = time?: "",
-        date = date.toString()
+        date = date?: 0,
+        img = img
     )
 }

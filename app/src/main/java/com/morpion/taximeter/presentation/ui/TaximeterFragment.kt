@@ -74,19 +74,23 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     private fun endTaximeterAndSaveToDb() {
         binding.btnStopService.visibility = View.GONE
         binding.btnStartService.visibility = View.VISIBLE
-        var distance = 0
-        for(polyline in pathPoints) {
-            distance += (TaximeterUtility.calculatePolylineLength(polyline).toInt())/1000
+        map?.snapshot { bmp ->
+            var distance = 0
+            for(polyline in pathPoints) {
+                distance += (TaximeterUtility.calculatePolylineLength(polyline).toInt())/1000
+            }
+            val curDate = Calendar.getInstance().timeInMillis
+            stopTaximeter()
+            viewModel.saveTaximeter(TaximeterHistoryLocalData(
+                id = 0,
+                paid = binding.tvPaid.text.toString(),
+                distance = binding.tvDistance.text.toString(),
+                time = binding.tvTime.text.toString(),
+                date = curDate,
+                img = bmp
+            ))
         }
-        val curDate = Calendar.getInstance().timeInMillis
-        stopTaximeter()
-        viewModel.saveTaximeter(TaximeterHistoryLocalData(
-            id = 0,
-            paid = binding.tvPaid.text.toString(),
-            distance = binding.tvDistance.text.toString(),
-            time = binding.tvTime.text.toString(),
-            date = curDate
-        ))
+
     }
 
     // Son çizgiyi ekleme

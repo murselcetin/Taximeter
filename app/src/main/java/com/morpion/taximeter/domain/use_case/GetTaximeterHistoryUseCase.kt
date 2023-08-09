@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class GetTaximeterHistoryUseCase @Inject constructor(private val repository: LocalRepository) {
 
-    suspend fun getTaximeterHistory() = repository.getTaximeterHistory()
+     fun getTaximeterHistory() = repository.getTaximeterHistory()
 
 }

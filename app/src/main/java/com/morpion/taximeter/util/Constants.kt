@@ -17,7 +17,7 @@ object Constants {
 
     const val POLYLINE_COLOR = Color.YELLOW
     const val POLYLINE_WIDTH = 8f
-    const val MAP_ZOOM = 20f
+    const val MAP_ZOOM = 15f
 
     const val TAXIMETER_START_PRICE = "taximeter_start_price"
     const val TAXIMETER_KM_PRICE = "taximeter_km_price"

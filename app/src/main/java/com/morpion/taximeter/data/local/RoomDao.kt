@@ -12,10 +12,12 @@ interface RoomDao {
     @Insert
     suspend fun saveTaximeter(taximeterHistoryData: TaximeterHistoryLocalData)
 
-    @Query("SELECT * FROM taximeter_history")
+    @Query("SELECT * FROM taximeter_history ORDER BY id DESC ")
     fun getTaximeterHistory(): Flow<List<TaximeterHistoryLocalData>>
 
-    @Query("SELECT * FROM taximeter_history ORDER BY id LIMIT 10")
+    @Query("SELECT * FROM taximeter_history ORDER BY id DESC LIMIT 10")
     fun getLastTaximeterHistory(): Flow<List<TaximeterHistoryLocalData>>
 
+    @Query("DELETE FROM taximeter_history WHERE id = :id")
+    suspend fun deleteTaximeter(id: Int)
 }

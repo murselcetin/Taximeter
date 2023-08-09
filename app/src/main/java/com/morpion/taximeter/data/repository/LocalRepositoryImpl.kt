@@ -20,4 +20,8 @@ class LocalRepositoryImpl @Inject constructor(private val dao: RoomDao) : LocalR
         return dao.getLastTaximeterHistory()
     }
 
+    override suspend fun deleteTaximeter(id: Int) {
+        dao.deleteTaximeter(id)
+    }
+
 }

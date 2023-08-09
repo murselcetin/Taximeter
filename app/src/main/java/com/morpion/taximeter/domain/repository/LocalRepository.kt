@@ -7,4 +7,5 @@ interface LocalRepository {
     suspend fun saveTaximeter(taximeterHistoryData: TaximeterHistoryLocalData)
     fun getTaximeterHistory(): Flow<List<TaximeterHistoryLocalData>>
     fun getLastTaximeterHistory(): Flow<List<TaximeterHistoryLocalData>>
+    suspend fun deleteTaximeter(id: Int)
 }

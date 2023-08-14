@@ -90,7 +90,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
                 img = bmp
             ))
         }
-
+        map?.clear()
     }
 
     // Son çizgiyi ekleme

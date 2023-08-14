@@ -39,6 +39,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             navigateTaximeterHistoryFragment()
         }
 
+        binding.clDirection.setSafeOnClickListener {
+            navigateDirectionsFragment()
+        }
+
         viewModel.getLastTaximeterHistory()
     }
 
@@ -49,6 +53,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun navigateTaximeterFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToTaximeterFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun navigateDirectionsFragment(){
+        val action = HomeFragmentDirections.actionHomeFragmentToDirectionsFragment()
         findNavController().navigate(action)
     }
 

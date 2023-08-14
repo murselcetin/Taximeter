@@ -40,10 +40,6 @@ class TaximeterHistoryFragment : BaseFragment<FragmentTaximeterHistoryBinding>(F
 
     private val viewModel: TaximeterHistoryViewModel by viewModels()
 
-    private var currentAnimator: Animator? = null
-
-    private var shortAnimationDuration: Int = 0
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

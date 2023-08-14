@@ -15,11 +15,14 @@ object Constants {
     const val LOCATION_UPDATE_INTERVAL = 5000L
     const val FASTEST_LOCATION_INTERVAL = 2000L
 
-    const val POLYLINE_COLOR = Color.YELLOW
+    const val POLYLINE_COLOR = Color.RED
     const val POLYLINE_WIDTH = 8f
     const val MAP_ZOOM = 15f
 
     const val TAXIMETER_START_PRICE = "taximeter_start_price"
     const val TAXIMETER_KM_PRICE = "taximeter_km_price"
+
+    const val DURATION = "duration"
+    const val DISTANCE = "distance"
 
 }

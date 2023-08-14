@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_taximeterHistoryFragment"
             app:destination="@id/taximeterHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_directionsFragment"
+            app:destination="@id/directionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/taximeterFragment"
@@ -33,6 +36,15 @@
         tools:layout="@layout/fragment_taximeter_history" >
         <action
             android:id="@+id/action_taximeterHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/directionsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.DirectionsFragment"
+        android:label="fragment_directions"
+        tools:layout="@layout/fragment_directions" >
+        <action
+            android:id="@+id/action_directionsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

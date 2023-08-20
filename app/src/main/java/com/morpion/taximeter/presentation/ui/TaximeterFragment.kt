@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -17,6 +16,7 @@ import com.morpion.taximeter.R
 import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData
 import com.morpion.taximeter.databinding.FragmentTaximeterBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
+import com.morpion.taximeter.presentation.ui.viewmodel.TaximeterViewModel
 import com.morpion.taximeter.util.Constants.ACTION_PAUSE_SERVICE
 import com.morpion.taximeter.util.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.morpion.taximeter.util.Constants.ACTION_STOP_SERVICE

@@ -19,8 +19,11 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_directions.xml" value="0.18" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taxi_stands.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter.xml" value="0.22" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter_history.xml" value="0.25" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/marker_taxi_stand.xml" value="1.0" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_last_taximeter_history_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_taximeter_history_item.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/menu/popup_menu.xml" value="0.27421875" />

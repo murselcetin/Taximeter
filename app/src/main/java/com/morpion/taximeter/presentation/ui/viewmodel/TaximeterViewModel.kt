@@ -1,4 +1,4 @@
-package com.morpion.taximeter.presentation.ui
+package com.morpion.taximeter.presentation.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData

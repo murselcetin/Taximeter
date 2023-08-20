@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData
 import com.morpion.taximeter.util.Converters
 
-@Database(entities = [TaximeterHistoryLocalData::class], version = 1, exportSchema = false)
+@Database(entities = [TaximeterHistoryLocalData::class],version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class RoomDb : RoomDatabase() {
     abstract fun getRoomDao(): RoomDao

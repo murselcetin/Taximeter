@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_directionsFragment"
             app:destination="@id/directionsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taxiStandsFragment"
+            app:destination="@id/taxiStandsFragment" />
     </fragment>
     <fragment
         android:id="@+id/taximeterFragment"
@@ -45,6 +48,24 @@
         tools:layout="@layout/fragment_directions" >
         <action
             android:id="@+id/action_directionsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taxiStandsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaxiStandsFragment"
+        android:label="fragment_taxi_stands"
+        tools:layout="@layout/fragment_taxi_stands" >
+        <action
+            android:id="@+id/action_taxiStandsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.morpion.taximeter.presentation.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

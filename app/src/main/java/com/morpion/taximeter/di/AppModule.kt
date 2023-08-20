@@ -3,6 +3,7 @@ package com.morpion.taximeter.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.morpion.taximeter.data.local.RoomDb
+import com.morpion.taximeter.shared.TaxiStandsManager
 import com.morpion.taximeter.util.LocalSessions
 import dagger.Module
 import dagger.Provides
@@ -27,6 +28,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideMySharedPreferences(sharedPreferences: SharedPreferences):LocalSessions = LocalSessions(sharedPreferences)
+
+    @Singleton
+    @Provides
+    fun provideTaxiStandsManager(local: LocalSessions): TaxiStandsManager = TaxiStandsManager(local)
 
     @Provides
     @Singleton

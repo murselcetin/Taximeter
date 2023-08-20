@@ -1,9 +1,9 @@
-package com.morpion.taximeter.presentation.ui
+package com.morpion.taximeter.presentation.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData
 import com.morpion.taximeter.domain.use_case.GetLastTaximeterHistoryUseCase
+import com.morpion.taximeter.domain.use_case.GetTaxiStandsUseCase
 import com.morpion.taximeter.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getLastTaximeterHistoryUseCase: GetLastTaximeterHistoryUseCase
+    private val getLastTaximeterHistoryUseCase: GetLastTaximeterHistoryUseCase,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())

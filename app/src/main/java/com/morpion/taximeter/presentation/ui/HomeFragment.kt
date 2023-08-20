@@ -1,9 +1,7 @@
 package com.morpion.taximeter.presentation.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +14,7 @@ import com.morpion.taximeter.databinding.FragmentHomeBinding
 import com.morpion.taximeter.domain.model.ui.TaximeterHistoryUIModel
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.presentation.ui.adapter.LastTaximeterHistoryAdapter
+import com.morpion.taximeter.presentation.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -43,6 +42,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             navigateDirectionsFragment()
         }
 
+        binding.clTaxiStands.setSafeOnClickListener {
+            navigateTaxiStandsFragment()
+        }
+
         viewModel.getLastTaximeterHistory()
     }
 
@@ -58,6 +61,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun navigateDirectionsFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToDirectionsFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun navigateTaxiStandsFragment(){
+        val action = HomeFragmentDirections.actionHomeFragmentToTaxiStandsFragment()
         findNavController().navigate(action)
     }
 

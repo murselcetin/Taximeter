@@ -13,12 +13,8 @@ class LocalSessions @Inject constructor(var prefs: SharedPreferences) {
         get() = prefs.getFloat(Constants.TAXIMETER_KM_PRICE, 0f)
         set(value) = prefs.edit().putFloat(Constants.TAXIMETER_KM_PRICE, value).apply()
 
-    var duration: String?
-        get() = prefs.getString(Constants.DURATION, null)
-        set(value) = prefs.edit().putString(Constants.DURATION, value).apply()
-
-    var distance: String?
-        get() = prefs.getString(Constants.DISTANCE, null)
-        set(value) = prefs.edit().putString(Constants.DISTANCE, value).apply()
+    var taxiStandsList: String?
+        get() = prefs.getString(Constants.TAXI_STANDS_LIST, null)
+        set(value) = prefs.edit().putString(Constants.TAXI_STANDS_LIST, value).apply()
 
 }

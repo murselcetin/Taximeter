@@ -1,9 +1,5 @@
 package com.morpion.taximeter.presentation.ui
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -13,7 +9,6 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Bundle
 import android.view.View
-import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
@@ -22,8 +17,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.morpion.taximeter.R
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.common.extensions.timestampToDate
 import com.morpion.taximeter.data.local.entity.toUiModel
@@ -31,6 +24,7 @@ import com.morpion.taximeter.databinding.FragmentTaximeterHistoryBinding
 import com.morpion.taximeter.domain.model.ui.TaximeterHistoryUIModel
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.presentation.ui.adapter.TaximeterHistoryAdapter
+import com.morpion.taximeter.presentation.ui.viewmodel.TaximeterHistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

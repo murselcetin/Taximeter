@@ -3,6 +3,11 @@ package com.morpion.taximeter.util
 import android.graphics.Color
 
 object Constants {
+
+    const val BASE_URL = "https://morpionsoftware.com/taximeter/"
+
+    const val TAXI_STANDS_LIST = "taxi_stands_list"
+
     const val ACTION_START_OR_RESUME_SERVICE = "ACTION_START_OR_RESUME_SERVICE"
     const val ACTION_PAUSE_SERVICE = "ACTION_PAUSE_SERVICE"
     const val ACTION_STOP_SERVICE = "ACTION_STOP_SERVICE"

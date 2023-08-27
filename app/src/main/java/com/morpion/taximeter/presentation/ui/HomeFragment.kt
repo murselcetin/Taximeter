@@ -46,7 +46,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             navigateTaxiStandsFragment()
         }
 
+        binding.clPaidCalculation.setSafeOnClickListener {
+            navigateTaxiFareCalculationFragment()
+        }
+
         viewModel.getLastTaximeterHistory()
+    }
+
+    private fun navigateTaxiFareCalculationFragment() {
+        val action = HomeFragmentDirections.actionHomeFragmentToTaxiFareCalculationFragment()
+        findNavController().navigate(action)
     }
 
     private fun navigateTaximeterHistoryFragment() {

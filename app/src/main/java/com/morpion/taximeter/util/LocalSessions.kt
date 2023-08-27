@@ -17,4 +17,8 @@ class LocalSessions @Inject constructor(var prefs: SharedPreferences) {
         get() = prefs.getString(Constants.TAXI_STANDS_LIST, null)
         set(value) = prefs.edit().putString(Constants.TAXI_STANDS_LIST, value).apply()
 
+    var taxiFaresList: String?
+        get() = prefs.getString(Constants.TAXI_FARES_LIST, null)
+        set(value) = prefs.edit().putString(Constants.TAXI_FARES_LIST, value).apply()
+
 }

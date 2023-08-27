@@ -15,7 +15,7 @@ class GetTaxiStandsUseCase @Inject constructor(private val repository: Repositor
     override suspend fun invoke(): Flow<RestResult<List<TaxiStandsData>>> =
         flow {
             emit(
-                repository.getTaximeterStands().map {
+                repository.getTaxiStands().map {
                     it.taxiStandsList.toTaxiStandsList()
                 }
             )

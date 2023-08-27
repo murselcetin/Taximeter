@@ -16,9 +16,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
     private val viewModel: SplashViewModel by viewModels()
 
-    @Inject
-    lateinit var taxiStandsManager: TaxiStandsManager
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

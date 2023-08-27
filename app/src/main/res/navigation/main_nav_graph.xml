@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_taxiStandsFragment"
             app:destination="@id/taxiStandsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taxiFareCalculationFragment"
+            app:destination="@id/taxiFareCalculationFragment" />
     </fragment>
     <fragment
         android:id="@+id/taximeterFragment"
@@ -66,6 +69,15 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taxiFareCalculationFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaxiFareCalculationFragment"
+        android:label="fragment_taxi_fare_calculation"
+        tools:layout="@layout/fragment_taxi_fare_calculation" >
+        <action
+            android:id="@+id/action_taxiFareCalculationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

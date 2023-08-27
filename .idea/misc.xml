@@ -15,11 +15,13 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/activity_google_maps.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/app_exit_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/drop_down_item.xml" value="0.365625" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_direction.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_directions.xml" value="0.18" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taxi_fare_calculation.xml" value="0.33" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taxi_stands.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter.xml" value="0.22" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter_history.xml" value="0.25" />
@@ -27,6 +29,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_last_taximeter_history_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_taximeter_history_item.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/menu/popup_menu.xml" value="0.27421875" />
+        <entry key="..\:/Users/pc/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>

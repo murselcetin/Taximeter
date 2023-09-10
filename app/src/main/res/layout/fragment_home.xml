@@ -37,12 +37,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/iv_welcome"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_settings"
+                    android:scaleX="1.7"
+                    android:scaleY="1.7"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/hello"
                     app:layout_constraintBottom_toBottomOf="@id/tv_welcome"
                     app:layout_constraintStart_toEndOf="@id/tv_welcome"
                     app:layout_constraintTop_toTopOf="@id/tv_welcome" />
@@ -96,14 +99,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/cardview_background_gradient"
-                        android:padding="30dp">
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
                             android:id="@+id/tv_taximeter"
                             style="@style/text_large_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TAKSİMETRE"
+                            android:text="Taksimetre"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -199,14 +210,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/cardview_background_gradient"
-                        android:padding="30dp">
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
                             android:id="@+id/tv_direction"
                             style="@style/text_large_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="YOL TARİFİ"
+                            android:text="Yol Tarifi"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -256,14 +275,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/cardview_background_gradient"
-                        android:padding="30dp">
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/iv_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
                             android:id="@+id/tv_taxi_stands"
                             style="@style/text_large_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TAKSİ DURAKLARI"
+                            android:text="Taksi Durakları"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -313,14 +341,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/cardview_background_gradient"
-                        android:padding="30dp">
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
                             android:id="@+id/tv_paid_calculation"
                             style="@style/text_large_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ÜCRET HESAPLA"
+                            android:text="Taksi Ücreti Hesapla"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_taxiFareCalculationFragment"
             app:destination="@id/taxiFareCalculationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/taximeterFragment"
@@ -79,5 +82,26 @@
         <action
             android:id="@+id/action_taxiFareCalculationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_taximeterFeeFragment"
+            app:destination="@id/taximeterFeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taximeterFeeFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaximeterFeeFragment"
+        android:label="fragment_taximeter_fee"
+        tools:layout="@layout/fragment_taximeter_fee" >
+        <action
+            android:id="@+id/action_taximeterFeeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>

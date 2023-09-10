@@ -163,7 +163,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
             val distTaximeter = it
             distance = TaximeterUtility.calculateLengthofPolylines(distTaximeter)
             val distanceFormat = round((distance / 1000f) * 10) /10f
-            val paid = sessions.taximeterStartPrice + (distanceFormat * sessions.taximeterKmPrice)
+            val paid = (sessions.taximeterStartPrice?.toDouble()?:0.0) + (distanceFormat.toString().toDouble() * (sessions.taximeterKmPrice?.toDouble()?:0.0))
             binding.tvDistance.text = distanceFormat.toString()
             binding.tvPaid.text = paid.toString()
         })
@@ -219,6 +219,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     
     private fun stopTaximeter() {
         sendCommandToService(ACTION_STOP_SERVICE)
+        map?.clear()
     }
 
     private fun sendCommandToService(action: String) {

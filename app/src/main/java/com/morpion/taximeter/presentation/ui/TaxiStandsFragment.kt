@@ -11,6 +11,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat

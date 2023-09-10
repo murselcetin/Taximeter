@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        sessions.taximeterStartPrice = 15f
-        sessions.taximeterKmPrice = 15f
+        sessions.taximeterStartPrice = "15.00"
+        sessions.taximeterKmPrice = "15.00"
     }
 }

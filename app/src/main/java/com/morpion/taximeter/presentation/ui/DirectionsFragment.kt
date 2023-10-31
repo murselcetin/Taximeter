@@ -37,11 +37,12 @@ import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.util.Constants
 import com.morpion.taximeter.util.DownloadTask
 import com.morpion.taximeter.util.LocalSessions
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import java.util.*
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirectionsBinding::inflate) {
 
     private var lastStartLocation: MarkerOptions? = null
@@ -150,6 +151,7 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
                         } }
                     }
                 }
+                Log.e("TAG", "onPlaceSelected: ${sessions.distance +" +---------- " + sessions.duration}", )
             }
 
             override fun onError(status: Status) {
@@ -291,6 +293,12 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
         val url = getDirectionsUrl(startLocation, endLocation)
         val downloadTask = DownloadTask()
         mMap?.let { downloadTask.execute(url, it) }
+
+        //val sharedPreferences = context?.getSharedPreferences("directions", Context.MODE_PRIVATE)
+        //val dist = sharedPreferences?.getString("distance", "")
+        //val dur = sharedPreferences?.getString("dur", "")
+
+        //Log.e("TAG", "fragment içinde : $dist - $dur", )
     }
 
     private fun getDirectionsUrl(startLocation: LatLng, endLocation: LatLng): String {

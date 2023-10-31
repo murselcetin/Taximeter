@@ -37,9 +37,9 @@ abstract class BaseFragment<viewBinding : ViewBinding>(private val inflate: Infl
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     val dialog = MaterialAlertDialogBuilder(requireContext())
-                        .setTitle("Taksimetre")
+                        .setTitle("Taksi+")
                         .setMessage("Uygumaladan çıkmak istediğinize emin misiniz?")
-                        .setIcon(R.drawable.ic_taxi)
+                        .setIcon(R.drawable.ic_logo)
                         .setPositiveButton("Evet") { d,_ ->
                             activity?.finish()
                             d.dismiss()

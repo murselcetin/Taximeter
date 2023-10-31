@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">Taksimetre</string>
+    <string name="app_name">Taksi+</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_google_maps">GoogleMapsActivity</string>
+
+    <string name="page_one_text_top">Mesafe, Süre ve Ücret</string>
+    <string name="page_one_text_bottom">Gösteren Taksimetre</string>
+    <string name="page_two_text_top">En Kısa ve En Verimli</string>
+    <string name="page_two_text_bottom">Yol Tarifi, Navigasyon</string>
+    <string name="page_three_text_top">3800 Taksi Durağı</string>
+    <string name="page_three_text_bottom">Konum ve Telefon Bilgisi</string>
+    <string name="page_four_text_top">Şehire Göre Taksi Ücretleri</string>
+    <string name="page_four_text_bottom">Mesafeye Göre Hesaplama</string>
 </resources>

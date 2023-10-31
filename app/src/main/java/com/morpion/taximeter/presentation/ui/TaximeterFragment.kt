@@ -136,7 +136,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     private fun updateTaximeterStatus(status: Boolean) {
         this.taximeterControl = status
         if(!status) {
-            binding.btnStartService.text = "Başlat"
+            binding.btnStartService.text = "Devam Et"
         } else {
             binding.btnStartService.text = "Duraklat"
         }

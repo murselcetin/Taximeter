@@ -4,7 +4,7 @@ import android.graphics.Color
 
 object Constants {
 
-    const val BASE_URL = "https://morpionsoftware.com/taximeter/"
+    const val BASE_URL = "https://morpionsoftware.com/taksiplus/"
 
     const val TAXI_STANDS_LIST = "taxi_stands_list"
     const val TAXI_FARES_LIST = "taxi_fares_list"
@@ -31,5 +31,8 @@ object Constants {
 
     const val DURATION = "duration"
     const val DISTANCE = "distance"
+
+    const val FIRST_TUTORIAL = "first_tutorial"
+    const val FIRST_TAXIMETER_FEE = "first_taximeter_fee"
 
 }

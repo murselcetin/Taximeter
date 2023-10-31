@@ -1,15 +1,15 @@
 package com.morpion.taximeter.util
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.maps.model.LatLng
-import com.morpion.taximeter.databinding.FragmentDirectionsBinding
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-
-class DirectionsJSONParser {
+class DirectionsJSONParser
+{
 
     /** Google Directions URL kullanarak web servisden elde edilen JSONObject çözümlenerek,
      * rotayı ne kadar sürede bitirebileceğiniz, rotanın kaç km olduğu, yol tarifleri hakkında detaylı bilgiler elde edilir    */
@@ -18,6 +18,7 @@ class DirectionsJSONParser {
         var jRoutes: JSONArray? = null
         var jLegs: JSONArray? = null
         var jSteps: JSONArray? = null
+
         try {
             jRoutes = jObject.getJSONArray("routes")
             for (i in 0 until jRoutes.length()) {
@@ -40,8 +41,8 @@ class DirectionsJSONParser {
                         val list = decodePoly(polyline)
                         for (l in list.indices) {
                             val hm = HashMap<String, String>()
-                            hm["lat"] = java.lang.Double.toString(list[l].latitude)
-                            hm["lng"] = java.lang.Double.toString(list[l].longitude)
+                            hm["lat"] = list[l].latitude.toString()
+                            hm["lng"] = list[l].longitude.toString()
                             path.add(hm)
                         }
                     }

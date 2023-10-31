@@ -10,10 +10,12 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -34,8 +36,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class TaxiStandsFragment :
-    BaseFragment<FragmentTaxiStandsBinding>(FragmentTaxiStandsBinding::inflate) {
+class TaxiStandsFragment : BaseFragment<FragmentTaxiStandsBinding>(FragmentTaxiStandsBinding::inflate) {
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
@@ -178,8 +179,7 @@ class TaxiStandsFragment :
     }
 
     private fun checkPermissions(): Boolean {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
+        if (ActivityCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(

@@ -1,4 +1,4 @@
-package com.morpion.taximeter.presentation.ui
+package com.morpion.taximeter.presentation.login
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.morpion.taximeter.databinding.FragmentSplashBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.presentation.ui.viewmodel.SplashViewModel
-import com.morpion.taximeter.shared.TaxiStandsManager
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {

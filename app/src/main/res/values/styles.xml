@@ -87,4 +87,32 @@
         <item name="fontFamily">@font/dijitalfont</item>
     </style>
 
+
+    <style name="OnboardingText">
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="OnboardingText.Top" parent="OnboardingText">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/classicfont</item>
+    </style>
+
+    <style name="OnboardingText.Bottom" parent="OnboardingText">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/classicfont</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.databinding.FragmentSplashBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.presentation.ui.viewmodel.SplashViewModel
@@ -26,7 +27,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
     private fun navigateHomePage() {
         val action = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.data.local.entity.toUiModel
 import com.morpion.taximeter.databinding.FragmentHomeBinding
@@ -15,14 +16,19 @@ import com.morpion.taximeter.domain.model.ui.TaximeterHistoryUIModel
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.presentation.ui.adapter.LastTaximeterHistoryAdapter
 import com.morpion.taximeter.presentation.ui.viewmodel.HomeViewModel
+import com.morpion.taximeter.util.LocalSessions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel: HomeViewModel by viewModels()
+
+    @Inject
+    lateinit var sessions: LocalSessions
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,32 +65,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun navigateSettingsFragment() {
         val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun navigateTaxiFareCalculationFragment() {
+        sessions.distance = "0,0 km"
         val action = HomeFragmentDirections.actionHomeFragmentToTaxiFareCalculationFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun navigateTaximeterHistoryFragment() {
         val action = HomeFragmentDirections.actionHomeFragmentToTaximeterHistoryFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun navigateTaximeterFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToTaximeterFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun navigateDirectionsFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToDirectionsFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun navigateTaxiStandsFragment(){
         val action = HomeFragmentDirections.actionHomeFragmentToTaxiStandsFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun setupLastTaximeterHistoryAdapter() {

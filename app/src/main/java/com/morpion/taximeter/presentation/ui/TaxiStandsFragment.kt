@@ -17,6 +17,7 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.common.extensions.toPhoneFormat
 import com.morpion.taximeter.databinding.FragmentTaxiStandsBinding
@@ -31,6 +33,8 @@ import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.shared.TaxiStandsManager
 import com.morpion.taximeter.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -82,17 +86,21 @@ class TaxiStandsFragment : BaseFragment<FragmentTaxiStandsBinding>(FragmentTaxiS
     }
 
     private fun addTaxiStandsMarkers() {
-        taxiStandsManager.getTaxiStands().forEach { itTaxiStands ->
-            val location = LatLng(itTaxiStands.latitude?.toDouble() ?: 0.0, itTaxiStands.longitude?.toDouble() ?: 0.0)
-            binding.map.getMapAsync {
-                val phone = itTaxiStands.durakTel?:""
-                it.addMarker(
-                    MarkerOptions()
-                        .position(location)
-                        .title("${itTaxiStands.durakAd}, ${phone.toPhoneFormat()} ")
-                )
+        lifecycleScope.launch {
+            delay(2000)
+            taxiStandsManager.getTaxiStands().forEach { itTaxiStands ->
+                val location = LatLng(itTaxiStands.latitude?.toDouble() ?: 0.0, itTaxiStands.longitude?.toDouble() ?: 0.0)
+                binding.map.getMapAsync {
+                    val phone = itTaxiStands.durakTel?:""
+                    it.addMarker(
+                        MarkerOptions()
+                            .position(location)
+                            .title("${itTaxiStands.durakAd}, ${phone.toPhoneFormat()} ")
+                    )
+                }
             }
         }
+
     }
 
     override fun onResume() {
@@ -141,7 +149,7 @@ class TaxiStandsFragment : BaseFragment<FragmentTaxiStandsBinding>(FragmentTaxiS
 
     private fun navigateHomeFragment() {
         val action = TaxiStandsFragmentDirections.actionTaxiStandsFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     @SuppressLint("MissingPermission", "SetTextI18n")

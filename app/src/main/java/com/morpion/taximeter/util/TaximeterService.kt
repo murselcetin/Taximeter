@@ -154,7 +154,7 @@ class TaximeterService : LifecycleService() {
     }
 
     private fun updateNotificationTaximeterState(taximeterControl: Boolean) {
-        val notificationActionText = if(taximeterControl) "Duraklat" else "Devam Et"
+        val notificationActionText = if(taximeterControl) "Duraklat" else "Başlat"
         val pendingIntent = if(taximeterControl) {
             val pauseIntent = Intent(this,TaximeterService::class.java).apply {
                 action = ACTION_PAUSE_SERVICE

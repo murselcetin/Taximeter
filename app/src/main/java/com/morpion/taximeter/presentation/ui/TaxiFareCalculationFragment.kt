@@ -2,37 +2,48 @@ package com.morpion.taximeter.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.morpion.taximeter.R
+import com.morpion.taximeter.common.extensions.kmToDouble
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.databinding.FragmentTaxiFareCalculationBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
 import com.morpion.taximeter.shared.TaxiFaresManager
+import com.morpion.taximeter.util.LocalSessions
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TaxiFareCalculationFragment :
-    BaseFragment<FragmentTaxiFareCalculationBinding>(FragmentTaxiFareCalculationBinding::inflate) {
+class TaxiFareCalculationFragment : BaseFragment<FragmentTaxiFareCalculationBinding>(FragmentTaxiFareCalculationBinding::inflate) {
 
     @Inject
     lateinit var taxiFaresManager: TaxiFaresManager
+
+    @Inject
+    lateinit var sessions: LocalSessions
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setCitySpinner()
 
+        if (sessions.distance?.kmToDouble() != "0.0") {
+            binding.edDistance.setText(sessions.distance?.kmToDouble())
+        }
+
         binding.btnCalculation.setSafeOnClickListener {
-            Log.e("TAG", "mesafe: ${binding.edDistance.text} ", )
-            Log.e("TAG", "şehir: ${binding.autoCompleteTextView.text} ", )
             if (binding.autoCompleteTextView.text.toString() != "Şehir Seçiniz" && binding.edDistance.text.toString() != "") {
                 taxiFaresCalculation(binding.autoCompleteTextView.text.toString(), binding.edDistance.text.toString().toDouble())
+            } else {
+                if (binding.autoCompleteTextView.text.toString() == "Şehir Seçiniz") {
+                    alertDialog("Lütfen Şehir Seçiniz!",type = 0)
+                }else {
+                    alertDialog("Lütfen Mesafe Giriniz!",type = 0)
+                }
             }
         }
     }
@@ -80,6 +91,6 @@ class TaxiFareCalculationFragment :
 
     private fun navigateHomeFragment() {
         val action = TaxiFareCalculationFragmentDirections.actionTaxiFareCalculationFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 }

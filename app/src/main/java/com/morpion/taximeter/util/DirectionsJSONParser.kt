@@ -4,13 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.google.android.gms.maps.model.LatLng
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import javax.inject.Inject
 
-class DirectionsJSONParser
-{
-
+class DirectionsJSONParser @Inject constructor(private val sessions: LocalSessions){
     /** Google Directions URL kullanarak web servisden elde edilen JSONObject çözümlenerek,
      * rotayı ne kadar sürede bitirebileceğiniz, rotanın kaç km olduğu, yol tarifleri hakkında detaylı bilgiler elde edilir    */
     fun parse(jObject: JSONObject): List<List<HashMap<String, String>>>{
@@ -27,6 +27,9 @@ class DirectionsJSONParser
 
                 val dist = c.getJSONObject("distance")
                 val dur = c.getJSONObject("duration")
+
+                sessions.duration = dur.getString("text")
+                sessions.distance = dist.getString("text")
 
                 Log.e("TAG", "${dist.getString("text")} - ${dur.getString("text")}", )
 

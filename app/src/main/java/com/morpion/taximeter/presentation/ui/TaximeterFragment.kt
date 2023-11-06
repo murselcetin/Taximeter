@@ -2,8 +2,17 @@ package com.morpion.taximeter.presentation.ui
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,6 +22,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morpion.taximeter.R
+import com.morpion.taximeter.common.extensions.safeNavigate
+import com.morpion.taximeter.common.extensions.setSafeOnClickListener
+import com.morpion.taximeter.common.extensions.timestampToDate
 import com.morpion.taximeter.data.local.entity.TaximeterHistoryLocalData
 import com.morpion.taximeter.databinding.FragmentTaximeterBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
@@ -81,16 +93,17 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
             }
             val curDate = Calendar.getInstance().timeInMillis
             stopTaximeter()
-            viewModel.saveTaximeter(TaximeterHistoryLocalData(
+            val taximeterData = TaximeterHistoryLocalData(
                 id = 0,
                 paid = binding.tvPaid.text.toString(),
                 distance = binding.tvDistance.text.toString(),
                 time = binding.tvTime.text.toString(),
                 date = curDate,
                 img = bmp
-            ))
+            )
+            showDialog(taximeterData)
+            viewModel.saveTaximeter(taximeterData)
         }
-        map?.clear()
     }
 
     // Son çizgiyi ekleme
@@ -136,7 +149,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     private fun updateTaximeterStatus(status: Boolean) {
         this.taximeterControl = status
         if(!status) {
-            binding.btnStartService.text = "Devam Et"
+            binding.btnStartService.text = "Başlat"
         } else {
             binding.btnStartService.text = "Duraklat"
         }
@@ -155,17 +168,23 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     private fun subscribeToObservers() {
         TaximeterService.taximeterControl.observe(viewLifecycleOwner, Observer {
             updateTaximeterStatus(it)
+            Log.e("TAG", "subscribeToObservers: $it", )
         })
         TaximeterService.pathPoints.observe(viewLifecycleOwner, Observer{
-            pathPoints = it
-            addLatestPolyline()
-            moveCameraToUser()
-            val distTaximeter = it
-            distance = TaximeterUtility.calculateLengthofPolylines(distTaximeter)
-            val distanceFormat = round((distance / 1000f) * 10) /10f
-            val paid = (sessions.taximeterStartPrice?.toDouble()?:0.0) + (distanceFormat.toString().toDouble() * (sessions.taximeterKmPrice?.toDouble()?:0.0))
-            binding.tvDistance.text = distanceFormat.toString()
-            binding.tvPaid.text = paid.toString()
+            try {
+                pathPoints = it
+                addLatestPolyline()
+                moveCameraToUser()
+                val distTaximeter = it
+                distance = TaximeterUtility.calculateLengthofPolylines(distTaximeter)
+                val distanceFormat = round((distance / 1000f) * 10) /10f
+                val paid = (sessions.taximeterStartPrice?.toDouble()?:0.0) + (distanceFormat.toString().toDouble() * (sessions.taximeterKmPrice?.toDouble()?:0.0))
+                binding.tvDistance.text = distanceFormat.toString()
+                binding.tvPaid.text = paid.toString()
+            }catch (e:Exception){
+                findNavController().popBackStack()
+            }
+
         })
 
         TaximeterService.timeRunInSeconds.observe(viewLifecycleOwner, Observer {
@@ -214,7 +233,7 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
 
     private fun navigateHomeFragment(){
         val action = TaximeterFragmentDirections.actionTaximeterFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
     
     private fun stopTaximeter() {
@@ -262,5 +281,27 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
          binding.mapView.onSaveInstanceState(outState)
+    }
+
+    private fun showDialog(taximeterData: TaximeterHistoryLocalData) {
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        val alertDesign = LayoutInflater.from(context).inflate(R.layout.taximeter_dialog, null)
+        val paidText = alertDesign.findViewById(R.id.tv_paid) as TextView
+        val distanceText = alertDesign.findViewById(R.id.tv_distance) as TextView
+        val durationText = alertDesign.findViewById(R.id.tv_duration) as TextView
+        val dateText = alertDesign.findViewById(R.id.tv_date) as TextView
+        val okeyButton = alertDesign.findViewById(R.id.btn_okey) as Button
+        paidText.text = taximeterData.paid
+        distanceText.text = taximeterData.distance
+        durationText.text = taximeterData.time
+        dateText.text = taximeterData.date?.timestampToDate()
+        builder.setView(alertDesign)
+        val d = builder.create()
+        d.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        d.show()
+        d.setCanceledOnTouchOutside(false)
+        okeyButton.setSafeOnClickListener {
+            d.dismiss()
+        }
     }
 }

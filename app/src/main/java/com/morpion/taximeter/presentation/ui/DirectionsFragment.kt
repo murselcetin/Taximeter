@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -14,8 +15,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.Status
@@ -25,12 +29,12 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.Polyline
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.morpion.taximeter.R
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.databinding.FragmentDirectionsBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
@@ -38,9 +42,10 @@ import com.morpion.taximeter.util.Constants
 import com.morpion.taximeter.util.DownloadTask
 import com.morpion.taximeter.util.LocalSessions
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirectionsBinding::inflate) {
@@ -51,6 +56,9 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
     @Inject
     lateinit var sessions: LocalSessions
 
+    @Inject
+    lateinit var downloadTask : DownloadTask
+
     var mMap: GoogleMap? = null
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -58,6 +66,8 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setStyleAutoCompleteTextView()
 
         val apiKey = "AIzaSyDV2pGO9KXLicf5z6s7AOa_dpb8gKRQrnw"
 
@@ -75,6 +85,10 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
 
         binding.btnNavigate.setSafeOnClickListener {
             navigateGoogleMapDirections()
+        }
+
+        binding.btnCalculationTaxiPaid.setSafeOnClickListener {
+            navigateTaxiFareCalculationFragment()
         }
 
         val startLocation = childFragmentManager.findFragmentById(R.id.frg_start_location) as AutocompleteSupportFragment?
@@ -99,7 +113,7 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
                     it.clear()
                     lastStartLocation = MarkerOptions().position(location).title(place.name)
                     it.addMarker(lastStartLocation)
-                    it?.animateCamera(
+                    it.animateCamera(
                         CameraUpdateFactory.newLatLngZoom(
                             location,
                             Constants.MAP_ZOOM
@@ -151,12 +165,27 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
                         } }
                     }
                 }
-                Log.e("TAG", "onPlaceSelected: ${sessions.distance +" +---------- " + sessions.duration}", )
+                Log.e(
+                    "TAG",
+                    "onPlaceSelected: ${sessions.distance + " +---------- " + sessions.duration}"
+                )
             }
 
             override fun onError(status: Status) {
             }
         })
+    }
+
+    private fun setStyleAutoCompleteTextView() {
+        val typeface = ResourcesCompat.getFont(requireContext(), R.font.classicfont)
+        val autoCompleteEditTextStart = childFragmentManager.findFragmentById(R.id.frg_start_location)?.view
+        val autoCompleteEditTextEnd = childFragmentManager.findFragmentById(R.id.frg_end_location)?.view
+        val editTextStart = autoCompleteEditTextStart?.findViewById<EditText>(com.google.android.libraries.places.R.id.places_autocomplete_search_input)
+        val editTextEnd= autoCompleteEditTextEnd?.findViewById<EditText>(com.google.android.libraries.places.R.id.places_autocomplete_search_input)
+        editTextStart?.textSize = 18.0f
+        editTextEnd?.textSize = 18.0f
+        editTextStart?.typeface = typeface
+        editTextEnd?.typeface = typeface
     }
 
     private fun navigateGoogleMapDirections() {
@@ -286,19 +315,20 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
 
     private fun navigateHomeFragment() {
         val action = DirectionsFragmentDirections.actionDirectionsFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
+    }
+
+    private fun navigateTaxiFareCalculationFragment() {
+        val action = DirectionsFragmentDirections.actionDirectionsFragmentToTaxiFareCalculationFragment()
+        findNavController().safeNavigate(action)
     }
 
     private suspend fun drawRoute(startLocation: LatLng, endLocation: LatLng) {
         val url = getDirectionsUrl(startLocation, endLocation)
-        val downloadTask = DownloadTask()
         mMap?.let { downloadTask.execute(url, it) }
-
-        //val sharedPreferences = context?.getSharedPreferences("directions", Context.MODE_PRIVATE)
-        //val dist = sharedPreferences?.getString("distance", "")
-        //val dur = sharedPreferences?.getString("dur", "")
-
-        //Log.e("TAG", "fragment içinde : $dist - $dur", )
+        binding.btnCalculationTaxiPaid.visibility = View.VISIBLE
+        binding.tvDistance.text = sessions.distance
+        binding.tvDuration.text = sessions.duration
     }
 
     private fun getDirectionsUrl(startLocation: LatLng, endLocation: LatLng): String {
@@ -311,7 +341,7 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
         val output = "json"
 
         // Oluşturduğumuz parametreleri kullanarak url yi oluşturuyoruz
-        Log.e("TAG", "https://maps.googleapis.com/maps/api/directions/$output?$parameters", )
+        Log.e("TAG", "https://maps.googleapis.com/maps/api/directions/$output?$parameters")
         return "https://maps.googleapis.com/maps/api/directions/$output?$parameters"
     }
 }

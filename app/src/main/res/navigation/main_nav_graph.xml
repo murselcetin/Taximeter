@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_directionsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_directionsFragment_to_taxiFareCalculationFragment"
+            app:destination="@id/taxiFareCalculationFragment" />
     </fragment>
     <fragment
         android:id="@+id/taxiStandsFragment"

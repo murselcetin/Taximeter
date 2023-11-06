@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.morpion.taximeter.R
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.databinding.FragmentSettingsBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
@@ -62,7 +63,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     private fun navigateTaximeterPaidFragment() {
         val action = SettingsFragmentDirections.actionSettingsFragmentToTaximeterFeeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     override fun onAttach(context: Context) {
@@ -81,7 +82,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     private fun navigateHomeFragment() {
         val action = SettingsFragmentDirections.actionSettingsFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     private fun createDateNow() {

@@ -13,8 +13,10 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.util.ArrayList
 import java.util.HashMap
+import javax.inject.Inject
 
-class ParserTask() {
+class ParserTask  @Inject constructor(private val parser: DirectionsJSONParser) {
+
     suspend fun execute(jsonData: String, mMap: GoogleMap) = coroutineScope {
         val routes = parseDirections(jsonData)
         drawPolyline(routes,mMap)
@@ -23,7 +25,6 @@ class ParserTask() {
     private suspend fun parseDirections(jsonData: String): List<List<HashMap<String, String>>> = withContext(
         Dispatchers.Default) {
         val jObject = JSONObject(jsonData)
-        val parser = DirectionsJSONParser()
         return@withContext parser.parse(jObject)
     }
 

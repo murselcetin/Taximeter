@@ -2,18 +2,14 @@ package com.morpion.taximeter.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
-import com.morpion.taximeter.R
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.databinding.FragmentTaximeterFeeBinding
 import com.morpion.taximeter.presentation.base.BaseFragment
-import com.morpion.taximeter.shared.TaxiFaresManager
 import com.morpion.taximeter.util.LocalSessions
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -28,14 +24,22 @@ class TaximeterFeeFragment : BaseFragment<FragmentTaximeterFeeBinding>(FragmentT
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnUpdateFee.setSafeOnClickListener {
-            updateTaximeterFee()
+            if (binding.edStartFee.text.toString() != "" && binding.edPerKmFee.text.toString() != "") {
+                updateTaximeterFee()
+            } else {
+                if (binding.edStartFee.text.toString() == "") {
+                    alertDialog("Lütfen Taksimetre Açılış Ücreti Giriniz!",type = 0)
+                } else {
+                    alertDialog("Lütfen 1 km Mesafe Ücreti Giriniz!",type = 0)
+                }
+            }
         }
     }
 
     private fun updateTaximeterFee() {
         localSessions.taximeterStartPrice = binding.edStartFee.text.toString()
         localSessions.taximeterKmPrice = binding.edPerKmFee.text.toString()
-        Toast.makeText(requireContext(), "Güncellendi", Toast.LENGTH_SHORT).show()
+        alertDialog("Güncellendi!", type = 1)
     }
 
     override fun onAttach(context: Context) {
@@ -54,6 +58,6 @@ class TaximeterFeeFragment : BaseFragment<FragmentTaximeterFeeBinding>(FragmentT
 
     private fun navigateSettingFragment() {
         val action = TaximeterFeeFragmentDirections.actionTaximeterFeeFragmentToSettingsFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 }

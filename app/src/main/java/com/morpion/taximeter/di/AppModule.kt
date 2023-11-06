@@ -5,7 +5,10 @@ import android.content.SharedPreferences
 import com.morpion.taximeter.data.local.RoomDb
 import com.morpion.taximeter.shared.TaxiFaresManager
 import com.morpion.taximeter.shared.TaxiStandsManager
+import com.morpion.taximeter.util.DirectionsJSONParser
+import com.morpion.taximeter.util.DownloadTask
 import com.morpion.taximeter.util.LocalSessions
+import com.morpion.taximeter.util.ParserTask
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,5 +44,20 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRoomDao(db: RoomDb) = db.getRoomDao()
+
+
+    @Provides
+    @Singleton
+    fun provideDirectionsJsonParser(local: LocalSessions) = DirectionsJSONParser(local)
+
+    @Provides
+    @Singleton
+    fun provideParserTask(local: DirectionsJSONParser) = ParserTask(local)
+
+    @Provides
+    @Singleton
+    fun provideDownloadTask(local: ParserTask) = DownloadTask(local)
+
+
 
 }

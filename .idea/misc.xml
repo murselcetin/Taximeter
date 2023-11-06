@@ -7,6 +7,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/cardview_background.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/cardview_background_gradient.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/cardview_background_normal.xml" value="0.1835" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/dialog_background_normal.xml" value="0.1855" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/directions_header_background_normal.xml" value="0.18" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_arrow.xml" value="0.185" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_baseline_content_copy_24.xml" value="0.1835" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_delete.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_direction.xml" value="0.185" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_directions2.xml" value="0.1855" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_error.xml" value="0.1855" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_menu.xml" value="0.1835" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_navigation.xml" value="0.1855" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/drawable/ic_route.xml" value="0.1855" />
@@ -30,7 +32,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/app_exit_dialog.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/drop_down_item.xml" value="0.365625" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_direction.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_directions.xml" value="0.18" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_directions.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_first_taximeter_fee.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_maps.xml" value="0.36666666666666664" />
@@ -45,8 +47,10 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter_fee.xml" value="0.18" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/fragment_taximeter_history.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/marker_taxi_stand.xml" value="1.0" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/not_completed_dialog.xml" value="0.18958333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_last_taximeter_history_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/recycler_taximeter_history_item.xml" value="0.25" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/layout/taximeter_dialog.xml" value="0.33" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/Taximeter/app/src/main/res/menu/popup_menu.xml" value="0.27421875" />
         <entry key="..\:/Users/pc/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.18802083333333333" />
       </map>

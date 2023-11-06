@@ -12,8 +12,9 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
+import javax.inject.Inject
 
-class DownloadTask {
+class DownloadTask @Inject constructor(private val parserTask: ParserTask) {
     suspend fun execute(url: String,mMap: GoogleMap) = coroutineScope {
         launch(Dispatchers.IO) {
             try {
@@ -24,6 +25,7 @@ class DownloadTask {
                     // Hazırladığımız url yi kullanarak web servise Http bağlantısı ile sağlıyoruz
                     val url = URL(url)
                     urlConnection = url.openConnection() as HttpURLConnection
+                    urlConnection.setRequestProperty("Accept-Language", "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7")
                     urlConnection.connect()
 
                     // webservisden gelen json datayı okuyup, data değişkenine atadık
@@ -52,7 +54,6 @@ class DownloadTask {
 
     private suspend fun onPostExecute(result: String,mMap: GoogleMap) {
         // Google Directions bilgisini, JSON formatını parse ederek almayı sağlayan sınıf
-        val parserTask = ParserTask()
         parserTask.execute(result,mMap)
     }
 }

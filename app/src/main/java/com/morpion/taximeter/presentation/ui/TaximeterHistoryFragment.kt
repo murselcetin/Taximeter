@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.morpion.taximeter.common.extensions.safeNavigate
 import com.morpion.taximeter.common.extensions.setSafeOnClickListener
 import com.morpion.taximeter.common.extensions.timestampToDate
 import com.morpion.taximeter.data.local.entity.toUiModel
@@ -99,7 +100,7 @@ class TaximeterHistoryFragment : BaseFragment<FragmentTaximeterHistoryBinding>(F
 
     private fun navigateHomeFragment(){
         val action = TaximeterHistoryFragmentDirections.actionTaximeterHistoryFragmentToHomeFragment()
-        findNavController().navigate(action)
+        findNavController().safeNavigate(action)
     }
 
     override fun onAttach(context: Context) {

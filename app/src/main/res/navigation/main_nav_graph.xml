@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.morpion.taximeter.presentation.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_taximeterFragment"
+            app:destination="@id/taximeterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taximeterHistoryFragment"
+            app:destination="@id/taximeterHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_directionsFragment"
+            app:destination="@id/directionsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taxiStandsFragment"
+            app:destination="@id/taxiStandsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_taxiFareCalculationFragment"
+            app:destination="@id/taxiFareCalculationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taximeterFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaximeterFragment"
+        android:label="fragment_taximeter"
+        tools:layout="@layout/fragment_taximeter" >
+        <action
+            android:id="@+id/action_taximeterFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taximeterHistoryFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaximeterHistoryFragment"
+        android:label="fragment_taximeter_history"
+        tools:layout="@layout/fragment_taximeter_history" >
+        <action
+            android:id="@+id/action_taximeterHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/directionsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.DirectionsFragment"
+        android:label="fragment_directions"
+        tools:layout="@layout/fragment_directions" >
+        <action
+            android:id="@+id/action_directionsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_directionsFragment_to_taxiFareCalculationFragment"
+            app:destination="@id/taxiFareCalculationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taxiStandsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaxiStandsFragment"
+        android:label="fragment_taxi_stands"
+        tools:layout="@layout/fragment_taxi_stands" >
+        <action
+            android:id="@+id/action_taxiStandsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.morpion.taximeter.presentation.login.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taxiFareCalculationFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaxiFareCalculationFragment"
+        android:label="fragment_taxi_fare_calculation"
+        tools:layout="@layout/fragment_taxi_fare_calculation" >
+        <action
+            android:id="@+id/action_taxiFareCalculationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.morpion.taximeter.presentation.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_taximeterFeeFragment"
+            app:destination="@id/taximeterFeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taximeterFeeFragment"
+        android:name="com.morpion.taximeter.presentation.ui.TaximeterFeeFragment"
+        android:label="fragment_taximeter_fee"
+        tools:layout="@layout/fragment_taximeter_fee" >
+        <action
+            android:id="@+id/action_taximeterFeeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.morpion.taximeter.presentation.login.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_firstTaximeterFeeFragment"
+            app:destination="@id/firstTaximeterFeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstTaximeterFeeFragment"
+        android:name="com.morpion.taximeter.presentation.login.FirstTaximeterFeeFragment"
+        android:label="FirstTaximeterFeeFragment" >
+        <action
+            android:id="@+id/action_firstTaximeterFeeFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+</navigation>

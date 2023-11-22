@@ -28,22 +28,22 @@ Taksi+, Android platformu için geliştirilmiş bir taksi hizmeti uygulamasıdı
 
 | Taksimetre |
 | ------- |
-|<img src="splash.png" width="250" height="500"/>|
+|<img src="taksimetre.gif" width="250" height="500"/>|
 
 </br>
 
 | Yol Tarifi |
 | ------- |
-|<img src="splash.png" width="250" height="500"/>|
+|<img src="yoltarifi.gif" width="250" height="500"/>|
 
 </br>
 
 | Taksi Durakları |
 | ------- |
-|<img src="splash.png" width="250" height="500"/>|
+|<img src="taksidurakları.gif" width="250" height="500"/>|
 
 </br>
 
 | Ücret Hesaplama |
 | ------- |
-|<img src="splash.png" width="250" height="500"/>|
+|<img src="taksiücreti.gif" width="250" height="500"/>|

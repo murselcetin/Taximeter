@@ -86,6 +86,12 @@ class TaximeterFragment : BaseFragment<FragmentTaximeterBinding>(FragmentTaximet
     private fun endTaximeterAndSaveToDb() {
         binding.btnStopService.visibility = View.GONE
         binding.btnStartService.visibility = View.VISIBLE
+        map?.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                pathPoints.last().last(),
+                40f
+            )
+        )
         map?.snapshot { bmp ->
             var distance = 0
             for(polyline in pathPoints) {

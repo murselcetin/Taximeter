@@ -69,7 +69,7 @@ class DirectionsFragment : BaseFragment<FragmentDirectionsBinding>(FragmentDirec
 
         setStyleAutoCompleteTextView()
 
-        val apiKey = "AIzaSyDV2pGO9KXLicf5z6s7AOa_dpb8gKRQrnw"
+        val apiKey = "YOUR-API-KEY"
 
         if (!Places.isInitialized()) {
             Places.initialize(requireContext(), apiKey)
